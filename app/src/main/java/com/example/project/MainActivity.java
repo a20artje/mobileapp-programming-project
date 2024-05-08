@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -13,6 +16,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ArrayList<UpgradelistItem> upgrades = new ArrayList<>(Arrays.asList(
+                new UpgradelistItem("Cursor"),
+                new UpgradelistItem("Grandma"),
+                new UpgradelistItem("Farm")
+        ));
+
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, upgrades, new RecyclerViewAdapter.OnClickListener(){
+            @Override
+            public void onClick(UpgradelistItem upgrade) {
+                //TODO open detail activity
+            }
+        });
     }
 
 }
