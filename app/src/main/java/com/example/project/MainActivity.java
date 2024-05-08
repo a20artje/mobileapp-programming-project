@@ -29,11 +29,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        upgrades = new ArrayList<>(Arrays.asList(
-                new UpgradelistItem("Cursor"),
-                new UpgradelistItem("Grandma"),
-                new UpgradelistItem("Farm")
-        ));
+        upgrades = new ArrayList<>();
 
         adapter = new RecyclerViewAdapter(this, upgrades, new RecyclerViewAdapter.OnClickListener(){
             @Override
