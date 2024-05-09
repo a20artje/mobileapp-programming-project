@@ -81,4 +81,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         drawerLayout.openDrawer(GravityCompat.START);
 
     }
+
+    public void cookieClicked(View view) {
+    }
 }
