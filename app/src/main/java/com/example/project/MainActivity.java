@@ -31,6 +31,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
+        setUpRecyclerView();
+
+    }
+
+    private void setUpRecyclerView(){
         upgrades = new ArrayList<>();
 
         adapter = new RecyclerViewAdapter(this, upgrades, new RecyclerViewAdapter.OnClickListener(){
@@ -46,8 +51,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         new JsonTask(this).execute(JSON_URL);
     }
-
-
     public void onPostExecute(String json) {
         Log.d("MainActivity", json);
         Gson gson = new Gson();
