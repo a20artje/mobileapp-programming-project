@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private ArrayList<UpgradelistItem> upgrades;
     private RecyclerViewAdapter adapter;
     private DrawerLayout drawerLayout;
+    private ImageButton cookieButton;
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=a20artje";
 
     @Override
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawerLayout = findViewById(R.id.drawer_layout);
+        cookieButton = findViewById(R.id.cookie_button);
 
         setUpRecyclerView();
 
@@ -83,5 +88,9 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     }
 
     public void cookieClicked(View view) {
+
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_down);
+        // Apply animation to ImageButton
+        cookieButton.startAnimation(animation);
     }
 }
