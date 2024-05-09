@@ -11,6 +11,9 @@
     android:background="@color/colorBackground">
 
     <!-- Top appbar -->
+
+
+    <!-- Navigation View -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appbarConstraint"
         android:layout_width="match_parent"
@@ -24,60 +27,77 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <ImageButton
                     android:id="@+id/upgrade_menu_button"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
+                    android:contentDescription="upgrade menu"
                     android:onClick="openUpgradeMenu"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:src="@drawable/ic_upgrade_menu"
-                    android:contentDescription="upgrade menu" />
+                    android:src="@drawable/ic_upgrade_menu" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" />
 
                 <ImageButton
                     android:id="@+id/about_button"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
+                    android:contentDescription="@string/about_button_name"
                     android:onClick="openAbout"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:src="@drawable/ic_about"
-                    android:contentDescription="@string/about_button_name" />
+                    android:src="@drawable/ic_about" />
 
             </LinearLayout>
 
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <TextView
+            android:id="@+id/number_of_cookies"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="208dp"
+            android:background="@color/colorBackground"
+
+            android:text="0"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="50sp"
+            />
+
         <ImageButton
             android:id="@+id/cookie_button"
 
-            android:paddingTop="56dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            android:src="@drawable/ic_cookie"
+            android:layout_marginTop="300dp"
             android:background="@color/colorBackground"
-            android:onClick="cookieClicked"/>
+            android:onClick="cookieClicked"
+            android:paddingBottom="105dp"
+            android:src="@drawable/ic_cookie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number_of_cookies" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-    <!-- Navigation View -->
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

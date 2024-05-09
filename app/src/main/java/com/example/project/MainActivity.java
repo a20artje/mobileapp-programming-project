@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,7 +30,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private RecyclerViewAdapter adapter;
     private DrawerLayout drawerLayout;
     private ImageButton cookieButton;
+
+    private TextView amountOfCookiesText;
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=a20artje";
+
+    private int amountOfCookies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +43,10 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         drawerLayout = findViewById(R.id.drawer_layout);
         cookieButton = findViewById(R.id.cookie_button);
 
-        setUpRecyclerView();
+        amountOfCookiesText = findViewById(R.id.number_of_cookies);
 
+        setUpRecyclerView();
+        amountOfCookies = 0;
 
 
     }
@@ -92,5 +99,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_down);
         // Apply animation to ImageButton
         cookieButton.startAnimation(animation);
+        amountOfCookies++;
+        amountOfCookiesText.setText(String.valueOf(amountOfCookies));
     }
 }
