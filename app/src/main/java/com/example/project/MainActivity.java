@@ -30,12 +30,19 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+
 
         setUpRecyclerView();
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.openDrawer(GravityCompat.START);
+
+
+        findViewById(R.id.exit_nav_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
 
     }
 

@@ -60,6 +60,17 @@
                 app:layout_constraintTop_toBottomOf="@id/navigation"
                 />
 
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/exit_nav_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:src="@drawable/ic_arrow_left"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="50dp"
+
+                />
+
         </com.google.android.material.navigation.NavigationView>
 
     </androidx.drawerlayout.widget.DrawerLayout>
