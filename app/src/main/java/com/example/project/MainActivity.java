@@ -24,25 +24,18 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     private ArrayList<UpgradelistItem> upgrades;
     private RecyclerViewAdapter adapter;
+    private DrawerLayout drawerLayout;
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=a20artje";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         setUpRecyclerView();
-        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.openDrawer(GravityCompat.START);
 
 
-        findViewById(R.id.exit_nav_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-            }
-        });
 
     }
 
@@ -77,6 +70,15 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     public void openAbout(View view) {
         Intent intent = new Intent(MainActivity.this, AboutActivity.class);
         startActivity(intent);
+
+    }
+
+    public void exitNavMenu(View view) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    public void openUpgradeMenu(View view) {
+        drawerLayout.openDrawer(GravityCompat.START);
 
     }
 }

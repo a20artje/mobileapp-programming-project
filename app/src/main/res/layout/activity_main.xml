@@ -23,7 +23,17 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/about2_button"
+                android:id="@+id/upgrade_menu_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:onClick="openUpgradeMenu"
+                style="?android:attr/buttonBarButtonStyle"
+                android:src="@drawable/ic_upgrade_menu"
+                android:contentDescription="upgrade menu" />
+
+            <ImageButton
+                android:id="@+id/about_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -68,8 +78,7 @@
                 android:src="@drawable/ic_arrow_left"
                 android:layout_gravity="end|bottom"
                 android:layout_marginBottom="50dp"
-
-                />
+                android:onClick="exitNavMenu"/>
 
         </com.google.android.material.navigation.NavigationView>
 
