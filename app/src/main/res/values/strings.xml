@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Project</string>
+    <string name="app_name">Cookie Clicker</string>
+    <string name="about_button_name">About</string>
+    <string name="back_button_name">Back</string>
 </resources>
