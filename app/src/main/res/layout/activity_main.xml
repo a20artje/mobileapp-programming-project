@@ -15,11 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <ImageButton
                 android:id="@+id/about2_button"
                 android:layout_width="wrap_content"
@@ -30,8 +25,6 @@
                 android:src="@drawable/ic_about"
                 android:contentDescription="@string/about_button_name" />
 
-
-        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
