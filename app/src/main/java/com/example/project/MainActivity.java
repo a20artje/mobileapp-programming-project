@@ -1,6 +1,7 @@
 package com.example.project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private TextView amountOfCookiesText;
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=a20artje";
 
+    SharedPreferences cookiesPreferenceRef;
+    SharedPreferences.Editor cookiesPreferenceEditor;
     private int amountOfCookies;
 
     @Override
@@ -46,9 +49,16 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         amountOfCookiesText = findViewById(R.id.number_of_cookies);
 
         setUpRecyclerView();
-        amountOfCookies = 0;
+        setUpPreferences();
+    }
 
+    private void setUpPreferences(){
+        cookiesPreferenceRef = getSharedPreferences("cookieStats", MODE_PRIVATE);
 
+        cookiesPreferenceEditor = cookiesPreferenceRef.edit();
+
+        int amountOfCookies = cookiesPreferenceRef.getInt("amountOfCookies", 0);
+        amountOfCookiesText.setText(String.valueOf(amountOfCookies));
     }
 
     private void setUpRecyclerView(){
@@ -96,7 +106,10 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_down);
         cookieButton.startAnimation(animation);
 
+        int amountOfCookies = cookiesPreferenceRef.getInt("amountOfCookies", 0);
         amountOfCookies++;
+        cookiesPreferenceEditor.putInt("amountOfCookies", amountOfCookies);
+        cookiesPreferenceEditor.apply();
         amountOfCookiesText.setText(String.valueOf(amountOfCookies));
     }
 }
