@@ -9,13 +9,13 @@ public class UpgradeItem {
     private String Id;
     private String name;
 
-    @SerializedName("Category")
+    @SerializedName("category")
     private float cookiesPerSecond;
-    @SerializedName("Cost")
+    @SerializedName("cost")
     private int cost;
-    @SerializedName("Size")
+    @SerializedName("size")
     private int costIncrease;
-    @SerializedName("Auxdata")
+    @SerializedName("auxdata")
     private String description;
 
     public String getName(){

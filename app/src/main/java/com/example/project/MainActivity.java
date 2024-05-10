@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         new JsonTask(this).execute(JSON_URL);
     }
     public void onPostExecute(String json) {
-        Log.d("MainActivity", json);
         Gson gson = new Gson();
         Type type = new TypeToken<List<UpgradeItem>>() {}.getType();
         List<UpgradeItem> listOfUpgrades = gson.fromJson(json, type);
@@ -95,8 +94,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     public void cookieClicked(View view) {
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_down);
-        // Apply animation to ImageButton
         cookieButton.startAnimation(animation);
+
         amountOfCookies++;
         amountOfCookiesText.setText(String.valueOf(amountOfCookies));
     }

@@ -2,6 +2,8 @@ package com.example.project;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.title.setText(items.get(position).getName());
+        holder.cost.setText(String.valueOf(items.get(position).getCost()));
     }
 
     @Override
@@ -40,16 +43,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
+        TextView cost;
+
 
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             title = itemView.findViewById(R.id.title);
+            cost = itemView.findViewById(R.id.cost);
         }
 
         @Override
         public void onClick(View view) {
             onClickListener.onClick(items.get(getAdapterPosition()));
+            startAnimation();
+        }
+
+        private void startAnimation() {
+            Animation animation = AnimationUtils.loadAnimation(itemView.getContext(), R.anim.scale_down);
+            itemView.startAnimation(animation);
         }
     }
 
