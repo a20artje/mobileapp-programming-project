@@ -26,7 +26,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
-    private ArrayList<UpgradelistItem> upgrades;
+    private ArrayList<UpgradeItem> upgrades;
     private RecyclerViewAdapter adapter;
     private DrawerLayout drawerLayout;
     private ImageButton cookieButton;
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         adapter = new RecyclerViewAdapter(this, upgrades, new RecyclerViewAdapter.OnClickListener(){
             @Override
-            public void onClick(UpgradelistItem upgrade) {
+            public void onClick(UpgradeItem upgrade) {
                 //TODO open detail activity
             }
         });
@@ -73,9 +73,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Type type = new TypeToken<List<UpgradeItem>>() {}.getType();
         List<UpgradeItem> listOfUpgrades = gson.fromJson(json, type);
 
-        for(UpgradeItem upgradeItem : listOfUpgrades){
-            upgrades.add(new UpgradelistItem(upgradeItem.getName()));
-        }
+        upgrades.addAll(listOfUpgrades);
+
         adapter.notifyDataSetChanged();
     }
 
@@ -91,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     public void openUpgradeMenu(View view) {
         drawerLayout.openDrawer(GravityCompat.START);
-
     }
 
     public void cookieClicked(View view) {

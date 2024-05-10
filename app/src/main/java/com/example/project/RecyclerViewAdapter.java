@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
-    private List<UpgradelistItem> items;
+    private List<UpgradeItem> items;
     private LayoutInflater layoutInflater;
     private OnClickListener onClickListener;
 
-    RecyclerViewAdapter(Context context, List<UpgradelistItem> items, OnClickListener onClickListener) {
+    RecyclerViewAdapter(Context context, List<UpgradeItem> items, OnClickListener onClickListener) {
         this.layoutInflater = LayoutInflater.from(context);
         this.items = items;
         this.onClickListener = onClickListener;
@@ -25,12 +25,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(layoutInflater.inflate(R.layout.upgradelist_item, parent, false));
+        return new ViewHolder(layoutInflater.inflate(R.layout.upgrade_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.title.setText(items.get(position).getTitle());
+        holder.title.setText(items.get(position).getName());
     }
 
     @Override
@@ -54,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public interface OnClickListener {
-        void onClick(UpgradelistItem item);
+        void onClick(UpgradeItem item);
     }
     
 }
