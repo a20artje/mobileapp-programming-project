@@ -67,7 +67,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         adapter = new RecyclerViewAdapter(this, upgrades, new RecyclerViewAdapter.OnClickListener(){
             @Override
             public void onClick(UpgradeItem upgrade) {
-                //TODO open detail activity
+                Intent intent = new Intent(MainActivity.this, UpgradeDetails.class);
+                intent.putExtra("name", upgrade.getName());
+                intent.putExtra("cost", upgrade.getCost());
+                intent.putExtra("cookiesPerSecond", upgrade.getCookiesPerSecond());
+                intent.putExtra("description", upgrade.getDescription());
             }
         });
 
