@@ -2,6 +2,7 @@ package com.example.project;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +27,15 @@ public class UpgradeDetails extends AppCompatActivity {
             cost = extras.getInt("cost");
             description = extras.getString("description");
 
+            TextView nameText = findViewById(R.id.upgrade_name);
+            TextView cpsText = findViewById(R.id.upgrade_cps);
+            TextView costText = findViewById(R.id.upgrade_cost);
+            TextView descriptionText = findViewById(R.id.upgrade_description);
 
+            nameText.setText(name);
+            cpsText.setText(String.valueOf(cookiesPerSecond));
+            costText.setText(String.valueOf(cost));
+            descriptionText.setText(description);
         }
 
     }

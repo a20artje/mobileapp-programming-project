@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
                 intent.putExtra("cost", upgrade.getCost());
                 intent.putExtra("cookiesPerSecond", upgrade.getCookiesPerSecond());
                 intent.putExtra("description", upgrade.getDescription());
+                startActivity(intent);
             }
         });
 
