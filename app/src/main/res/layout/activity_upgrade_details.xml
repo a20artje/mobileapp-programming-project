@@ -136,8 +136,10 @@
     <ImageView
         android:id="@+id/upgrade_image"
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="400dp"
+
+        android:background="@drawable/ic_under_construction"
 
         app:layout_constraintTop_toBottomOf="@id/description_layout"
         app:layout_constraintBottom_toTopOf="@+id/purchase_button_card"
