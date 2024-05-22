@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     private int cookiesLastTick;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         setUpRecyclerView();
         setUpPreferences();
         setUpCpsThread();
-
     }
 
     private void setUpPreferences(){

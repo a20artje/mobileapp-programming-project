@@ -47,7 +47,8 @@ public class UpgradeDetails extends AppCompatActivity {
             TextView amountText = findViewById(R.id.upgrade_amount);
 
             nameText.setText(name);
-            cpsText.setText(String.valueOf(cookiesPerSecond));
+            String cpsString = String.valueOf(cookiesPerSecond) + " cookies/sec";
+            cpsText.setText(cpsString);
             costText.setText(String.valueOf(cost));
             descriptionText.setText(description);
             amountText.setText(amountString);
