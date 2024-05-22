@@ -3,6 +3,7 @@ package com.example.project;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -39,6 +40,13 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     SharedPreferences.Editor cookiesPreferenceEditor;
     private int amountOfCookies;
 
+    final Handler handler = new Handler();
+    final int delay = 1000; // 1000 milliseconds == 1 second
+
+    private int cookiesLastTick;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +58,17 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         setUpRecyclerView();
         setUpPreferences();
+        setUpCpsThread();
+
     }
 
     private void setUpPreferences(){
         cookiesPreferenceRef = getSharedPreferences("cookieStats", MODE_PRIVATE);
-
         cookiesPreferenceEditor = cookiesPreferenceRef.edit();
 
         int amountOfCookies = cookiesPreferenceRef.getInt("amountOfCookies", 0);
-        amountOfCookiesText.setText(String.valueOf(amountOfCookies));
+        String balance = String.valueOf(amountOfCookies) + " cookies";
+        amountOfCookiesText.setText(String.valueOf(balance));
     }
 
     private void setUpRecyclerView(){
@@ -115,6 +125,50 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         amountOfCookies++;
         cookiesPreferenceEditor.putInt("amountOfCookies", amountOfCookies);
         cookiesPreferenceEditor.apply();
-        amountOfCookiesText.setText(String.valueOf(amountOfCookies));
+
+        updateBalanceUI();
     }
+
+    private void updateBalanceUI() {
+
+        int amountOfCookies = cookiesPreferenceRef.getInt("amountOfCookies", 0);
+        String balance = amountOfCookies + " cookies";
+        amountOfCookiesText.setText(balance);
+    }
+
+    private void setUpCpsThread() {
+        handler.postDelayed(new Runnable() {
+
+            int cookiesToAdd;
+            public void run() {
+
+                cookiesToAdd = 0;
+
+                for(UpgradeItem upgrade: upgrades){
+                    String name = upgrade.getName();
+                    float cps = upgrade.getCookiesPerSecond();
+                    int amountOfUpgrades = cookiesPreferenceRef.getInt(name, 0);
+
+                    int output = Math.round(amountOfUpgrades * cps);
+                    cookiesToAdd += output;
+                }
+
+                cookiesLastTick = cookiesPreferenceRef.getInt("amountOfCookies", 0);
+
+                int cookieBalance = cookiesToAdd + cookiesLastTick;
+
+                cookiesPreferenceEditor.putInt("amountOfCookies", cookieBalance);
+                cookiesPreferenceEditor.apply();
+
+                TextView cpsText = findViewById(R.id.cookies_per_second);
+                String cpsTextString = "per second: " + String.valueOf(cookiesToAdd);
+                cpsText.setText(cpsTextString);
+
+                updateBalanceUI();
+
+                handler.postDelayed(this, delay);
+            }
+        }, delay);
+    }
+
 }
