@@ -30,6 +30,12 @@ public class UpgradeDetails extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
+        int cookieBalance = cookiesPreferenceRef.getInt("amountOfCookies", 0);
+        TextView cookieBalanceText = findViewById(R.id.cookie_balance);
+        String balance = "balance: " + String.valueOf(cookieBalance);
+        cookieBalanceText.setText(balance);
+
+
         if(extras != null) {
             name = extras.getString("name");
             cookiesPerSecond = extras.getFloat("cookiesPerSecond");

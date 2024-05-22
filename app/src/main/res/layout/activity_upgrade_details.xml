@@ -19,15 +19,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:onClick="closeActivity"
-            style="?android:attr/buttonBarButtonStyle"
-            android:src="@drawable/ic_arrow_left"
-            android:contentDescription="upgrade menu" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:onClick="closeActivity"
+                style="?android:attr/buttonBarButtonStyle"
+                android:src="@drawable/ic_arrow_left"
+                android:contentDescription="upgrade menu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/cookie_balance"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingEnd="25dp"
+
+                android:background="@android:color/transparent"
+                android:textSize="25sp"
+                android:textColor="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
