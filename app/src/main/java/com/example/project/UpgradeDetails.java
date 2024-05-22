@@ -30,11 +30,7 @@ public class UpgradeDetails extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
-        int cookieBalance = cookiesPreferenceRef.getInt("amountOfCookies", 0);
-        TextView cookieBalanceText = findViewById(R.id.cookie_balance);
-        String balance = "balance: " + String.valueOf(cookieBalance);
-        cookieBalanceText.setText(balance);
-
+       updateBalanceUI();
 
         if(extras != null) {
             name = extras.getString("name");
@@ -60,6 +56,15 @@ public class UpgradeDetails extends AppCompatActivity {
 
     }
 
+    private void updateBalanceUI (){
+
+        int cookieBalance = cookiesPreferenceRef.getInt("amountOfCookies", 0);
+        TextView cookieBalanceText = findViewById(R.id.cookie_balance);
+        String balance = "balance: " + String.valueOf(cookieBalance);
+        cookieBalanceText.setText(balance);
+
+    }
+
     public void closeActivity(View view) {
         finish();
     }
@@ -70,14 +75,23 @@ public class UpgradeDetails extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_down);
         purchaseButton.startAnimation(animation);
 
-        int amountOfTimesUpgraded = cookiesPreferenceRef.getInt(name, 0);
-        amountOfTimesUpgraded++;
-        cookiesPreferenceEditor.putInt(name, amountOfTimesUpgraded);
-        cookiesPreferenceEditor.apply();
+        int cookieBalance = cookiesPreferenceRef.getInt("amountOfCookies", 0);;
 
-        String amountString = "You own: " + String.valueOf(amountOfTimesUpgraded) + " " + name;
-        TextView amountText = findViewById(R.id.upgrade_amount);
-        amountText.setText(amountString);
+        if(cookieBalance >= cost){
 
+            int amountOfTimesUpgraded = cookiesPreferenceRef.getInt(name, 0);
+            amountOfTimesUpgraded++;
+            cookiesPreferenceEditor.putInt(name, amountOfTimesUpgraded);
+            cookiesPreferenceEditor.apply();
+            String amountString = "You own: " + String.valueOf(amountOfTimesUpgraded) + " " + name;
+            TextView amountText = findViewById(R.id.upgrade_amount);
+            amountText.setText(amountString);
+
+            cookieBalance -= cost;
+            cookiesPreferenceEditor.putInt("amountOfCookies", cookieBalance);
+            cookiesPreferenceEditor.apply();
+            updateBalanceUI();
+
+        }
     }
 }
