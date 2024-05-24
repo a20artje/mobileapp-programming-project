@@ -80,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
 
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="2dp"
 
@@ -93,7 +93,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:background="@android:color/transparent"
-                android:layout_margin="10dp">
+                android:layout_margin="25dp">
 
                 <TextView
                     android:id="@+id/upgrade_name"
@@ -137,7 +137,7 @@
             app:layout_constraintTop_toBottomOf="@id/upgrade_name_cps_card"
             app:layout_constraintBottom_toBottomOf="parent"
 
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="2dp"
 
@@ -147,7 +147,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="25dp">
                 <TextView
                     android:id="@+id/upgrade_description"
                     android:layout_width="match_parent"
@@ -178,20 +179,20 @@
     <ImageView
         android:id="@+id/upgrade_image"
 
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
 
         android:background="@drawable/ic_under_construction"
 
         app:layout_constraintTop_toBottomOf="@id/description_layout"
-        app:layout_constraintBottom_toTopOf="@+id/purchase_button_card"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
 
     <androidx.cardview.widget.CardView
 
-        android:id="@+id/purchase_button_card"
+        android:id="@+id/purchase_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -199,19 +200,19 @@
         app:layout_constraintTop_toBottomOf="@id/upgrade_image"
         android:background="@android:color/transparent"
         app:cardBackgroundColor="@android:color/transparent"
-        android:layout_margin="10dp"
+        android:layout_margin="25dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="25dp">
 
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/purchase_button"
                 android:text="PURCHASE"
                 android:textSize="40sp"
                 android:textStyle="bold"

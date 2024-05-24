@@ -72,7 +72,7 @@ public class UpgradeDetails extends AppCompatActivity {
 
     public void purchase(View view) {
 
-        View purchaseButton = findViewById(R.id.purchase_button_card);
+        View purchaseButton = findViewById(R.id.purchase_button);
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_down);
         purchaseButton.startAnimation(animation);
 
